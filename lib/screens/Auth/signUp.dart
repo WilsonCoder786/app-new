@@ -1,6 +1,7 @@
 // ignore: file_names
 // ignore_for_file: implementation_imports, prefer_const_constructors, unnecessary_import, unused_import
 
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -68,9 +69,8 @@ class _SignUpState extends State<SignUp> {
             ),
             Container(
               padding: EdgeInsets.all(10),
-              margin: EdgeInsets.only(top:5,left:15,right: 15),
+              margin: EdgeInsets.only(top: 5, left: 15, right: 15),
               child: TextFormField(
-                
                 // obscureText: showPwd,
                 // controller: userPasswordController,
                 validator: (value) {},
@@ -78,33 +78,83 @@ class _SignUpState extends State<SignUp> {
                 maxLines: 1,
                 style: TextStyle(color: Colors.white, fontSize: 15.sp),
                 decoration: InputDecoration(
-                  
                   filled: true,
-                  fillColor: Color.fromARGB(255, 251, 249, 249).withOpacity(0.3),
-                  contentPadding: EdgeInsets.symmetric(vertical:20.0,horizontal: 10), 
+                  fillColor:
+                      Color.fromARGB(255, 251, 249, 249).withOpacity(0.3),
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 20.0, horizontal: 10),
                   border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color.fromARGB(255, 104, 103, 103), width: 1.sp),
+                    borderSide: BorderSide(
+                        color: Color.fromARGB(255, 104, 103, 103), width: 1.sp),
                     borderRadius: BorderRadius.circular(10.r),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color.fromARGB(255, 104, 103, 103), width: 1.sp),
+                    borderSide: BorderSide(
+                        color: Color.fromARGB(255, 104, 103, 103), width: 1.sp),
                     borderRadius: BorderRadius.circular(10.r),
                   ),
                   errorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color.fromARGB(255, 104, 103, 103), width: 1.sp),
+                    borderSide: BorderSide(
+                        color: Color.fromARGB(255, 104, 103, 103), width: 1.sp),
                     borderRadius: BorderRadius.circular(10.r),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color.fromARGB(255, 104, 103, 103), width: 1.sp),
+                    borderSide: BorderSide(
+                        color: Color.fromARGB(255, 104, 103, 103), width: 1.sp),
                     borderRadius: BorderRadius.circular(10.r),
                   ),
                   hintText: 'Your Name',
                   hintStyle: TextStyle(color: Color.fromARGB(255, 70, 69, 69)),
-                 
-                  
                 ),
               ),
             ),
+         Container(
+  decoration: BoxDecoration(
+    border: Border.all(color: Colors.black, width: 1.0), // Customize the border style
+    borderRadius: BorderRadius.circular(10.0), // Customize the border radius
+  ),
+  child: Row(
+    children: [
+      Expanded(
+        flex: 1,
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border(
+              right: BorderSide(color: Colors.black, width: 1.0), // Right border
+            ),
+          ),
+          child: CountryCodePicker(
+            initialSelection: 'US',
+            onChanged: (CountryCode countryCode) {
+              // Handle country code change if needed
+            },
+          ),
+        ),
+      ),
+      Expanded(
+        flex: 2,
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border(
+              left: BorderSide(color: Colors.black, width: 1.0), // Left border
+            ),
+          ),
+          child: TextFormField(
+            keyboardType: TextInputType.phone,
+            decoration: InputDecoration(
+              hintText: 'Phone Number',
+              border: InputBorder.none, // Remove the input field's border
+            ),
+            // controller: phoneNumberController,
+            validator: (value) {
+              // Add validation logic if needed
+            },
+          ),
+        ),
+      ),
+    ],
+  ),
+)
           ],
         ),
       ),
